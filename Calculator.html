@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://toppng.com/uploads/preview/bannercalculator-icon-free-and-calculator-icon-black-and-white-11553407971z6jfv4zezh.png">
+    <title>Calculator</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/eurostile');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calc-body {
+            position: fixed;
+            padding: 20px;
+            background-color: rgb(166, 166, 166);
+            box-shadow: 0px 20px 0px 0px rgb(113, 113, 113);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            width: 260px;
+        }
+
+        #display {
+            justify-self: center;
+            height: 60px;
+            padding: 10px;
+            outline: none;
+            border: none;
+            width: 200px;
+            font-size: 1.6em;
+            background-color: rgb(233, 233, 233);
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: inset 0px 4px rgb(113, 113, 113);
+            text-align: right;
+            font-family: eurostile;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, auto);
+            gap: 8px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        button {
+            outline: none;
+            width: 100%;
+            aspect-ratio: 1/1;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 4px 0px 0px rgb(68, 68, 68);
+            font-size: 1.5em;
+            cursor: pointer;
+            background-color: rgb(101, 101, 101);
+            color: white;
+            font-family: 'EuroStyle', sans-serif;
+            box-sizing: border-box;
+        }
+
+        button:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        .btn-ver1 {
+            box-shadow: 0px 4px 0px 0px rgb(111, 111, 111);
+            background-color: rgb(190, 190, 190);
+            color: black;
+        }
+
+        .btn-ver2 {
+            box-shadow: 0px 4px 0px 0px rgb(141, 88, 3);
+            background-color: rgb(223, 167, 25);
+        }   
+    </style>
+</head>
+<body>
+    <div class="calc-body">
+        <input readonly id="display">
+        <div class="buttons">
+            <button onclick="clearDisplay()" class="btn-ver2">AC</button>
+            <button onclick="sliceValue()" class="btn-ver2">DEL</button>
+            <button onclick="displayVal('%')" class="btn-ver1">%</button>
+            <button onclick="displayVal('/')" class="btn-ver1">/</button>
+            <button onclick="displayVal('7')">7</button>
+            <button onclick="displayVal('8')">8</button>
+            <button onclick="displayVal('9')">9</button>
+            <button onclick="displayVal('*')" class="btn-ver1">x</button>
+            <button onclick="displayVal('4')">4</button>
+            <button onclick="displayVal('5')">5</button>
+            <button onclick="displayVal('6')">6</button>
+            <button onclick="displayVal('-')" class="btn-ver1">-</button>
+            <button onclick="displayVal('1')">1</button>
+            <button onclick="displayVal('2')">2</button>
+            <button onclick="displayVal('3')">3</button>
+            <button onclick="displayVal('+')" class="btn-ver1">+</button>
+            <button onclick="displayVal('0')">0</button>
+            <button onclick="displayVal('00')">00</button>
+            <button onclick="displayVal('.')">.</button>
+            <button onclick="calculate()" class="btn-ver1">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById("display");
+
+        function displayVal(input) {
+            display.value += input;
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+
+        function sliceValue() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            }
+            catch(error) {
+                display.value = "ERROR";
+            }
+        }
+    </script>
+</body>
+</html
